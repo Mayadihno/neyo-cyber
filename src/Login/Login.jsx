@@ -64,7 +64,7 @@ const Login = () => {
     e.preventDefault();
     setLoginLoading(true);
     sendSignInLinkToEmail(auth, email, {
-      url: "http://localhost:5173/protected/success",
+      url: "https://neyo-cybersecurity.netlify.app/protected/success",
       handleCodeInApp: true,
     })
       .then(() => {
