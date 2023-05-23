@@ -1,0 +1,10 @@
+.login{
+    text-align: left;
+    margin-top: 20px;
+}
+.form__content h2{
+    text-align: center;
+}
+.login form input{
+    margin-bottom: 20px;
+}

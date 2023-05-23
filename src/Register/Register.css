@@ -1,0 +1,22 @@
+.password_strength{
+    display: block;
+    padding: 4px 0px;
+}
+.register{
+    text-align: left;
+}
+.register__card h2{
+    text-align: center;
+}
+.register__card form input{
+    margin-bottom: 10px !important;
+}
+
+.box__center{
+   text-align: center;
+   padding-top: 10px;
+}
+.box__center .captacha{
+    padding-top: 20px;
+    margin-left: 50px;
+}

@@ -1,0 +1,32 @@
+.home{
+    margin-top: 150px;
+}
+.home__content{
+    width: 100%;
+    margin: auto;
+}
+.card__background{
+    background-color: #0a1d37 !important;
+    padding: 20px 10px !important;
+    color: white !important;
+}
+.home__card h2{
+    font-size: 20px;
+    padding: 10px 0px;
+}
+.home__card h4{
+    padding: 4px 0px;
+}
+.home__card h4 span{
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 5px 0px;
+    font-style: italic;
+}
+
+@media screen and (max-width:760px) {
+    .home__content {
+        width: 90%;
+    }
+}
