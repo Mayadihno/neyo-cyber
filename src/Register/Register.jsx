@@ -142,7 +142,7 @@ const Register = () => {
                   </span>
                   <div className="captacha">
                     <ReCAPTCHA
-                      sitekey="6Les7PolAAAAAEbGHpgfEDckNoKB04CcBaMKZ6T9"
+                      sitekey="6LcNaTQmAAAAAAkBu0T5UaCjw80KLGQo6XBEJK_3"
                       onChange={onChange}
                       ref={captchaRef}
                     />
