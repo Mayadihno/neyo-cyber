@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import {
   isSignInWithEmailLink,
   sendSignInLinkToEmail,
@@ -9,7 +10,8 @@ import {
 import { Box, Button, Input } from "@chakra-ui/react";
 import { auth } from "../Firebase/Config";
 import "./Login.css";
-const Login = () => {
+// eslint-disable-next-line react/prop-types
+const Login = ({ setHide, setShow }) => {
   const [email, setEmail] = useState("");
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -22,6 +24,10 @@ const Login = () => {
   const [initialLoading, setInitialLoading] = useState(false);
   const [initialError, setInitialError] = useState("");
 
+  const handleShow = () => {
+    setShow(false);
+    setHide(true);
+  };
   useEffect(() => {
     if (user) {
       // user is already signed in
@@ -144,6 +150,12 @@ const Login = () => {
                 </>
               )}
             </div>
+          </div>
+          <div
+            className="already"
+            style={{ marginTop: "10px", textAlign: "center" }}
+          >
+            Don't have an account ? <Link onClick={handleShow}>Register</Link>
           </div>
         </div>
       </div>

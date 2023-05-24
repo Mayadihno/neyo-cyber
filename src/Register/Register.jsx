@@ -174,7 +174,9 @@ const Register = () => {
           </div>
         </div>
       )}
-      {show && <Login />}
+      {show && (
+        <Login hide={hide} setHide={setHide} show={show} setShow={setShow} />
+      )}
     </React.Fragment>
   );
 };
