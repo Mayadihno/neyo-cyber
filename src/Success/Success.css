@@ -1,3 +1,24 @@
 .success{
-    margin-top: 150px;
+    position: absolute;
+   top: 20%;
+   left: 35%;
+   transform: translateX(-50%,-50%);
+   -webkit-transform: translateX(-50%,-50%);
+   -moz-transform: translateX(-50%,-50%);
+   -ms-transform: translateX(-50%,-50%);
+   -o-transform: translateX(-50%,-50%);
+}
+.success__top{
+     background-image: url('https://www.britishcouncil.or.th/sites/default/files/university_of_sunderland_0.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+@media screen and (max-width:760px) {
+    .success {
+        left: 0;
+        top: 10%;
+    }
 }

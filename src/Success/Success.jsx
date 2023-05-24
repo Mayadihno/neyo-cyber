@@ -29,31 +29,33 @@ const Success = () => {
 
   return (
     <React.Fragment>
-      <div className="success">
-        <div className="success__content">
-          <Card maxW={"md"} className="card__background">
-            <CardBody>
-              <p>
-                Congratulations {allData.fullname} you have securely signed in
-                to CET324 Assignments 2
-              </p>
-            </CardBody>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                marginBottom: "10px",
-              }}
-            >
-              <Button
-                variant={"outline"}
-                colorScheme="twitter"
-                onClick={handleLogout}
+      <div className="success__top">
+        <div className="success">
+          <div className="success__content">
+            <Card maxW={"md"} className="card__background">
+              <CardBody>
+                <p>
+                  Congratulations {allData.fullname} you have securely signed in
+                  to CET324 Assignments 2
+                </p>
+              </CardBody>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginBottom: "10px",
+                }}
               >
-                Logout
-              </Button>
-            </Box>
-          </Card>
+                <Button
+                  variant={"outline"}
+                  colorScheme="twitter"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              </Box>
+            </Card>
+          </div>
         </div>
       </div>
     </React.Fragment>

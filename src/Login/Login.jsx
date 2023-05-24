@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import {
@@ -8,6 +8,7 @@ import {
   signInWithEmailLink,
 } from "firebase/auth";
 import { Box, Button, Input } from "@chakra-ui/react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { auth } from "../Firebase/Config";
 import "./Login.css";
 // eslint-disable-next-line react/prop-types
@@ -23,6 +24,12 @@ const Login = ({ setHide, setShow }) => {
   const [infoMsg, setInfoMsg] = useState("");
   const [initialLoading, setInitialLoading] = useState(false);
   const [initialError, setInitialError] = useState("");
+  const [token, setToken] = useState(false);
+  const captchaRef = useRef(null);
+
+  function onChange(value) {
+    setToken(value);
+  }
 
   const handleShow = () => {
     setShow(false);
@@ -122,19 +129,36 @@ const Login = ({ setHide, setShow }) => {
                               variant="outline"
                               placeholder="Enter Password"
                             />
+                            <div className="captacha">
+                              <ReCAPTCHA
+                                sitekey="6LcNaTQmAAAAAAkBu0T5UaCjw80KLGQo6XBEJK_3"
+                                onChange={onChange}
+                                ref={captchaRef}
+                              />
+                            </div>
 
                             <Box sx={{ pt: "20px", textAlign: "center" }}>
-                              <Button
-                                type="submit"
-                                variant={"solid"}
-                                colorScheme="twitter"
-                              >
-                                {loginLoading ? (
-                                  <span>Logging you in</span>
-                                ) : (
-                                  <span>Login</span>
-                                )}
-                              </Button>
+                              {token ? (
+                                <Button
+                                  type="submit"
+                                  variant={"solid"}
+                                  colorScheme="twitter"
+                                >
+                                  {loginLoading ? (
+                                    <span>Logging you in</span>
+                                  ) : (
+                                    <span>Login</span>
+                                  )}
+                                </Button>
+                              ) : (
+                                <Button
+                                  type="submit"
+                                  variant={"ghost"}
+                                  colorScheme="twitter"
+                                >
+                                  Login
+                                </Button>
+                              )}
                             </Box>
                             {loginError !== "" && (
                               <div className="error-msg">{loginError}</div>
