@@ -20,3 +20,12 @@
     padding-top: 20px;
     margin-left: 10px;
 }
+.password input{
+    position: relative;
+}
+.showPassword{
+    position: absolute;
+    right: 5%;
+    margin-top: -54px;
+    cursor: pointer;
+}

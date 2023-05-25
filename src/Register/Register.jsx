@@ -17,6 +17,7 @@ const Register = () => {
   const [msg, setMsg] = useState("");
   const [score, setScore] = useState("null");
   const [token, setToken] = useState(false);
+  const [showPass, setShowPass] = useState(false);
   const captchaRef = useRef(null);
 
   function onChange(value) {
@@ -45,7 +46,7 @@ const Register = () => {
     }
   };
 
-  const { password, fullname, email, phoneNumber } = change;
+  const { password, fullname, email, phoneNumber, cpassword } = change;
 
   const handleClick = () => {
     setShow(true);
@@ -54,6 +55,10 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (password != cpassword) {
+      toast.warning("Confirm Password and Password must be same");
+      return;
+    }
     try {
       const users = await createUserWithEmailAndPassword(auth, email, password);
       updateProfile(auth.currentUser, {
@@ -122,7 +127,7 @@ const Register = () => {
                 <div className="password">
                   <label htmlFor="password">Password</label>
                   <Input
-                    type="password"
+                    type={!showPass ? "password" : "text"}
                     placeholder="Password"
                     id="password"
                     name="password"
@@ -131,6 +136,33 @@ const Register = () => {
                     size="md"
                     variant="outline"
                   />
+                  <div className="showPassword">
+                    {!showPass ? (
+                      <h2 onClick={() => setShowPass(!showPass)}>Show</h2>
+                    ) : (
+                      <h2 onClick={() => setShowPass(!showPass)}>Hide</h2>
+                    )}
+                  </div>
+                </div>
+                <div className="password">
+                  <label htmlFor="password">Confirm Password</label>
+                  <Input
+                    type={!showPass ? "password" : "text"}
+                    placeholder="Confirm Password"
+                    id="password"
+                    name="cpassword"
+                    required
+                    onChange={handleChange}
+                    size="md"
+                    variant="outline"
+                  />
+                  <div className="showPassword">
+                    {!showPass ? (
+                      <h2 onClick={() => setShowPass(!showPass)}>Show</h2>
+                    ) : (
+                      <h2 onClick={() => setShowPass(!showPass)}>Hide</h2>
+                    )}
+                  </div>
                 </div>
                 <span className="password_strength">
                   Password Strength: {msg.toUpperCase()}

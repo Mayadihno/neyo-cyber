@@ -25,6 +25,7 @@ const Login = ({ setHide, setShow }) => {
   const [initialLoading, setInitialLoading] = useState(false);
   const [initialError, setInitialError] = useState("");
   const [token, setToken] = useState(false);
+  const [showPass, setShowPass] = useState(false);
   const captchaRef = useRef(null);
 
   function onChange(value) {
@@ -122,13 +123,32 @@ const Login = ({ setHide, setShow }) => {
                               onChange={(e) => setEmail(e.target.value)}
                             />
                             <label>Password</label>
-                            <Input
-                              type="password"
-                              required
-                              name="password"
-                              variant="outline"
-                              placeholder="Enter Password"
-                            />
+                            <div className="password">
+                              <Input
+                                type={!showPass ? "password" : "text"}
+                                required
+                                name="password"
+                                variant="outline"
+                                placeholder="Enter Password"
+                              />
+                              <div className="showPassword">
+                                {!showPass ? (
+                                  <h2
+                                    style={{ marginTop: "-10px" }}
+                                    onClick={() => setShowPass(!showPass)}
+                                  >
+                                    Show
+                                  </h2>
+                                ) : (
+                                  <h2
+                                    style={{ marginTop: "-10px" }}
+                                    onClick={() => setShowPass(!showPass)}
+                                  >
+                                    Hide
+                                  </h2>
+                                )}
+                              </div>
+                            </div>
                             <div className="captacha">
                               <ReCAPTCHA
                                 sitekey="6LcNaTQmAAAAAAkBu0T5UaCjw80KLGQo6XBEJK_3"
